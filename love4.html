@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表白</title>
+    <!-- 引入 Google Fonts 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            transition: opacity 1s ease;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background: #ff6f61;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        button:hover {
+            background: #ff3b2f;
+            transform: scale(1.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #confession {
+            font-size: 2em;
+            color: #ff6f61;
+            animation: rotateScale 1.5s ease-in-out;
+        }
+
+        @keyframes rotateScale {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        /* 情书样式 */
+        #loveLetter {
+            font-size: 1.5em;
+            color: #333;
+            line-height: 1.6;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background: rgba(249, 181, 181, 0.9); /* 粉色背景 */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-family: 'Dancing Script', cursive; /* 使用 Google Fonts 字体 */
+        }
+
+        /* 逐句显示效果 */
+        .love-letter-line {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* 粒子背景 */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <h1>亲爱的，</h1>
+        <p>我有一个秘密想告诉你...</p>
+        <button id="confessBtn">点击这里</button>
+        <p id="confession" class="hidden">我喜欢你！💖</p>
+        <div id="loveLetter" class="hidden">
+            <p class="love-letter-line">亲爱的，</p>
+            <p class="love-letter-line">从我们相识的那一刻起，我的世界就变得不一样了。</p>
+            <p class="love-letter-line">你的笑容像阳光一样温暖，你的声音像音乐一样动听。</p>
+            <p class="love-letter-line">每一天，我都想和你一起度过，分享生活中的点点滴滴。</p>
+            <p class="love-letter-line">我想告诉你，我喜欢你，不仅仅是因为你的美丽，</p>
+            <p class="love-letter-line">更因为你让我的生活变得更加完整。</p>
+            <p class="love-letter-line">愿我们的故事，从今天开始，写下新的篇章。</p>
+            <p class="love-letter-line">💖</p>
+        </div>
+    </div>
+
+    <!-- 引入粒子库 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 粒子背景配置
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 50, // 粒子数量
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#ff6f61"
+                },
+                shape: {
+                    type: "image", // 使用图片作为粒子形状
+                    image: {
+                        src: "heart.png", // 心形图片路径
+                        width: 100, // 图片宽度
+                        height: 100 // 图片高度
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 20, // 粒子大小
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ff6f61",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 3,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "bubble"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    bubble: {
+                        distance: 200,
+                        size: 6,
+                        duration: 2,
+                        opacity: 0.8,
+                        speed: 3
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // 按钮点击事件
+        document.getElementById('confessBtn').addEventListener('click', function() {
+            // 隐藏按钮
+            const button = document.getElementById('confessBtn');
+            button.classList.add('hidden');
+
+            // 显示表白文字
+            const confession = document.getElementById('confession');
+            confession.classList.remove('hidden');
+
+            // 播放音乐
+            const music = new Audio('background-music.mp3'); // 替换为你的音乐文件路径
+            music.play();
+
+            // 3秒后显示情书
+            setTimeout(() => {
+                confession.classList.add('hidden');
+                const loveLetter = document.getElementById('loveLetter');
+                loveLetter.classList.remove('hidden');
+                loveLetter.style.opacity = 1;
+
+                // 逐句显示情书内容
+                const lines = document.querySelectorAll('.love-letter-line');
+                lines.forEach((line, index) => {
+                    setTimeout(() => {
+                        line.style.opacity = 1;
+                        line.style.transform = 'translateY(0)';
+                    }, index * 1500); // 每句间隔1秒
+                });
+            }, 3000); // 3秒后切换
+        });
+    </script>
+</body>
+</html>
